@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const Dropdown = ({ options, selected, onSelectedChange }) => {
+const Dropdown = ({ options, selected, onSelectedChange, label }) => {
   const [open, setOpen] = useState(false);
-  const ref = useRef();
+  const ref = useRef(); // use it to get reference of current element.
   useEffect(() => {
     const onBodyClick = (event) => {
       if (ref.current.contains(event.target)) {
@@ -18,6 +18,7 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
       });
     };
   }, []);
+
   const dropDownItems = options.map((option) => {
     if (option.value === selected.value) {
       return null; // Dont show anything
@@ -36,7 +37,7 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
     <div>
       <div ref={ref} className="ui form">
         <div className="field">
-          <label className="label">Please select a color</label>
+          <label className="label">{label}</label>
           <div
             onClick={() => setOpen(!open)}
             className={`ui selection dropdown ${open ? "visible active" : ""} `}

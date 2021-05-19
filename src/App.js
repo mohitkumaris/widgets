@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Dropdown from "./components/Dropdown";
+import Translate from "./components/Translate";
 //import Accordion from "./components/Accordion";
 // import Search from "./components/Search";
 
@@ -43,10 +44,17 @@ const App = () => {
       {/* <Accordion items={items} /> */}
       {/* <Search /> */}
       <Dropdown
+        label="Please select a Color"
         options={options}
         selected={selected}
         onSelectedChange={setSelected}
       ></Dropdown>
+      {/* <div>
+        <span style={{ color: `${selected.value}` }}>
+          The text is {selected.value}
+        </span>
+      </div> */}
+      <Translate />
     </div>
   );
 };
